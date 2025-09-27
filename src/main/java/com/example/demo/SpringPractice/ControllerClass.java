@@ -11,8 +11,11 @@ public class ControllerClass {
 	public String home(Model model) {
 		
 		ModelClass user = new ModelClass();
-	
-		
+        user.setName("Tom");
+		user.setAge(30);
+
+		model.addAttribute("user",user);
+
 		return "View";
 		
 	}

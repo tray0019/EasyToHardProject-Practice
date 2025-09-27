@@ -1,5 +1,4 @@
 package com.example.demo.SpringPractice;
-
 import lombok.Data;
 
 @Data
