@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Boot MVC Demo</title>
+    <title>User Form</title>
 </head>
 <body>
    
+        <h1>Enter your details</h1>
+        <form th:action="@{/submit}" th:object="${user}" method="post">
+            <label>Name: </label>
+            <input type="text" th:field="*{name}" required>
+            <br/><br/>
 
-    <p>Name: <span th:text="${user.getName()}"></span></p>
-    <p>Age: <span th:text="${user.getAge()}"></span></p>
+            <label>Age: </label>
+            <input type="text" th:field="*{age}" required>
+            <br/><br/>
+
+            <button type="submit">Submit</button>
+        </form>
+
+<h2>All Users</h2>
+<div th:if="${#lists.isEmpty(users)}">
+    <p>No user yet.</p>
+</div>
+
+<table th:if="${!#lists.isEmpty(users)}" border="1" cellpadding="6">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="u, iStat : ${users}">
+        <td th:text="${iStat.index + 1}">1</td>
+        <td th:text="${u.name}">Name</td>
+        <td th:text="${u.age}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<form th:action="@{/clear}" method="post" th:if="${!#lists.isEmpty(users)}">
+    <br>
+    <button type="submit">Clear All</button>
+
+</form>
 
 </body>
 </html>
