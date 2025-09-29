@@ -1,5 +1,6 @@
 package com.example.demo.SpringPractice;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,18 +9,22 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Service
 public class ServiceClass {
 
-    private final List<ModelClass> users = new CopyOnWriteArrayList<>();
+    private final RepositoryInterface repo;
+
+    public ServiceClass(RepositoryInterface repo) {
+        this.repo = repo;
+    }
 
     public void add(ModelClass user){
-        users.add(user);
+        repo.save(user);
     }
 
     public List<ModelClass> findAll(){
-        return users;
+        return repo.findAll();
     }
 
-    public void clear(){
-        users.clear();
+    public void deleteAll(){
+        repo.deleteAll();
     }
 
 }
