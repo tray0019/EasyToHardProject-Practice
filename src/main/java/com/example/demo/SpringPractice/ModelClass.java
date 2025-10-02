@@ -9,10 +9,17 @@ import lombok.Data;
 @Entity(name="user")
 public class ModelClass {
 
+	/*
+	- id
+	- name and age
+	 */
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private int age;
+
+
 
 }

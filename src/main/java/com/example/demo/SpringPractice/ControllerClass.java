@@ -10,30 +10,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ControllerClass {
 
+	/*
+	- implement serviceclass
+	- constructor dependency injection
+	- showFormAndList
+	- Submit form
+	- deleteAll
+	 */
+
 	private final ServiceClass service;
 
     public ControllerClass(ServiceClass service) {
         this.service = service;
     }
 
-    @GetMapping("/")
-	public String showFormAndList(Model model) {
+	@GetMapping("/")
+	public String showFormList(Model model){
 		ModelClass user = new ModelClass();
-		model.addAttribute("user", user);//ModelClass is user here
+		model.addAttribute("user",user);
 		model.addAttribute("users",service.findAll());
 		return "View";
 	}
 
 	@PostMapping("/submit")
-	public String submitForm(@ModelAttribute ModelClass user, Model model){
+	public String submit(@ModelAttribute ModelClass user){
 		service.add(user);
-		return "redirect:/";
+		return "rediret:/";
 	}
 
 	@PostMapping("/clear")
-	public String deleteAll(){
-		service.deleteAll();
+	public String deleteAll(ModelClass user){
+		service.clearForm();
 		return "redirect:/";
 	}
-	
+
+
 }
