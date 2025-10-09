@@ -7,13 +7,13 @@ import java.util.List;
 @Service
 class ServiceClass{
 
-    private final InterfaceRepository repo;
+    private RepositoryInterface repo;
 
-    ServiceClass(InterfaceRepository repo) {
+    ServiceClass(RepositoryInterface repo){
         this.repo = repo;
     }
 
-    public List<ModelClass> findAllUser(){
+    public List<ModelClass> getAllUser(){
         return repo.findAll();
     }
 
@@ -21,7 +21,7 @@ class ServiceClass{
         return repo.save(user);
     }
 
-    public void clearForm(){
+    public void deleteUser(){
         repo.deleteAll();
     }
 
