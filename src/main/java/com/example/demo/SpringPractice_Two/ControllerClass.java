@@ -1,7 +1,6 @@
 package com.example.demo.SpringPractice_Two;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,18 +8,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 class ControllerClass{
 
-    private ServiceClass service;
+    private ServiceCLass service;
 
-    ControllerClass(ServiceClass service){
+    ControllerClass(ServiceCLass service){
         this.service = service;
     }
 
     @GetMapping("/")
     public String getAllUser(Model model){
         ModelClass user = new ModelClass();
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         model.addAttribute("users",service.getAllUser());
-        return "View";
+        return "View2";
     }
 
     @PostMapping("submit")
@@ -30,9 +29,11 @@ class ControllerClass{
     }
 
     @PostMapping("clear")
-    public String delete(){
-        service.deleteUser();
+    public String deleteUser(){
+        service.deleteAllUser();
         return "redirect:/";
     }
+
+
 
 }

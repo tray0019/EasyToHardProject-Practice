@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-class ServiceClass{
+class ServiceCLass{
 
     private RepositoryInterface repo;
 
-    ServiceClass(RepositoryInterface repo){
+    ServiceCLass(RepositoryInterface repo){
         this.repo = repo;
     }
 
@@ -21,8 +21,11 @@ class ServiceClass{
         return repo.save(user);
     }
 
-    public void deleteUser(){
+    public void deleteAllUser(){
         repo.deleteAll();
     }
+
+
+
 
 }
