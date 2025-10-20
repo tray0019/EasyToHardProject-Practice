@@ -1,31 +1,28 @@
 package com.example.demo.SpringPractice_Two;
 
-import org.springframework.stereotype.Service;
 
+import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-class ServiceCLass{
+class ServiceClass{
 
-    private RepositoryInterface repo;
+    private final RepositoryInterface repo;
 
-    ServiceCLass(RepositoryInterface repo){
+    ServiceClass(RepositoryInterface repo){
         this.repo = repo;
     }
 
     public List<ModelClass> getAllUser(){
-        return repo.findAll();
+         return repo.findAll();
     }
 
     public ModelClass addUser(ModelClass user){
         return repo.save(user);
     }
 
-    public void deleteAllUser(){
+    public void deleteUser(){
         repo.deleteAll();
     }
-
-
-
 
 }

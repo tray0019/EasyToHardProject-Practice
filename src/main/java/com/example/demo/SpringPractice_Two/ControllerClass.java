@@ -8,32 +8,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 class ControllerClass{
 
-    private ServiceCLass service;
+    private ServiceClass service;
 
-    ControllerClass(ServiceCLass service){
+    ControllerClass(ServiceClass service){
         this.service = service;
     }
+
 
     @GetMapping("/")
     public String getAllUser(Model model){
         ModelClass user = new ModelClass();
-        model.addAttribute("user", user);
+        model.addAttribute("user",user);
         model.addAttribute("users",service.getAllUser());
         return "View2";
     }
 
-    @PostMapping("submit")
+    @PostMapping("/submit")
     public String addUser(ModelClass user){
         service.addUser(user);
         return "redirect:/";
     }
 
-    @PostMapping("clear")
-    public String deleteUser(){
-        service.deleteAllUser();
+    @PostMapping("/clear")
+    public String removeAllUser(){
+        service.deleteUser();
         return "redirect:/";
     }
-
 
 
 }
