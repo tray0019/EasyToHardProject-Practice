@@ -1,19 +1,20 @@
 package com.example.demo.SpringPractice_Two;
 
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-class ServiceClass{
+class ServiceClass {
 
-    private final RepositoryInterface repo;
+    private RepositoryInterface repo;
 
     ServiceClass(RepositoryInterface repo){
         this.repo = repo;
     }
 
-    public List<ModelClass> showUser(){
+    public List<ModelClass> showAllUser(){
         return repo.findAll();
     }
 
@@ -21,10 +22,8 @@ class ServiceClass{
         return repo.save(user);
     }
 
-    public void clearForm(){
+    public void deleteAllUser(){
         repo.deleteAll();
     }
-
-
 
 }
