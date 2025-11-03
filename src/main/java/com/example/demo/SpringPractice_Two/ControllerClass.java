@@ -1,13 +1,12 @@
 package com.example.demo.SpringPractice_Two;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-class ControllerClass {
+class ControllerClass{
 
     private ServiceClass service;
 
@@ -16,24 +15,24 @@ class ControllerClass {
     }
 
     @GetMapping("/")
-    public String getALlUser(Model model){
+    public String getAllUser(Model model){
         ModelClass user = new ModelClass();
         model.addAttribute("user",user);
-        model.addAttribute("users",service.showAllUser());
+        model.addAttribute("users",service.getAllUser());
+
         return "View2";
     }
 
     @PostMapping("/submit")
-    public String submitUser(ModelClass user){
+    public String addUser(ModelClass user){
         service.addUser(user);
         return "redirect:/";
     }
 
-    @PostMapping("/clear")
-    public String deleteALlUser(){
+    @PostMapping
+    public String deleteAllUser(){
         service.deleteAllUser();
         return "redirect:/";
     }
-
 
 }
