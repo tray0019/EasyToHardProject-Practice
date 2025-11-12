@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity(name="user")
 @Data
-class ModelClass{
+class ModelClass {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

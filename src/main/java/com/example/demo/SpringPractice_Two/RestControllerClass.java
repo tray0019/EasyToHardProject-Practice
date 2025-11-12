@@ -1,6 +1,6 @@
 package com.example.demo.SpringPractice_Two;
 
-
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,14 +9,14 @@ import java.util.List;
 @RequestMapping("/api/users")
 class RestControllerClass{
 
-    private ServiceClass service;
+    private final ServiceClass service;
 
     RestControllerClass(ServiceClass service){
         this.service = service;
     }
 
     @GetMapping
-    public List<ModelClass> getAllUser(){
+    public List<ModelClass> showAllUser(){
         return service.getAllUser();
     }
 

@@ -1,5 +1,6 @@
 package com.example.demo.SpringPractice_Two;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,6 @@ class ControllerClass{
         ModelClass user = new ModelClass();
         model.addAttribute("user",user);
         model.addAttribute("users",service.getAllUser());
-
         return "View2";
     }
 
@@ -29,10 +29,11 @@ class ControllerClass{
         return "redirect:/";
     }
 
-    @PostMapping
-    public String deleteAllUser(){
+    @PostMapping("/clear")
+    public String deleteALlUser(){
         service.deleteAllUser();
         return "redirect:/";
     }
 
 }
+
